@@ -18,7 +18,7 @@ In `.env`:
 - Set your secret key in `.env`
 - Set a random shared secret
 
-`bundle exec rerun "rackup"`
+`bundle exec puma`
 
 Visit https://localhost:9292/lookup?q=XYZ&shared_secret=abc to look up against your event.
 
@@ -42,3 +42,9 @@ If it doesn't match, you'll get:
 ```json
 { "valid": false }
 ```
+
+## Development
+
+If you want to make changes, you can use rerun to load changes automatically:
+
+`bundle exec rerun puma`
