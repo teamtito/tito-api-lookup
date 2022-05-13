@@ -18,13 +18,13 @@ In `.env`:
 - Set your secret key in `.env`
 - Set a random shared secret
 
-`bundle exec puma`
+`bundle exec puma -p 7170`
 
-Visit https://localhost:3000/lookup?q=XYZ&shared_secret=abc to look up against your event.
+Visit https://localhost:7170/lookup?q=XYZ&shared_secret=abc to look up against your event.
 
 ## Deploy to Heroku
 
-- Visit https://localhost:3000
+- Visit https://localhost:7170
 - Hit "Deploy to Heroku"
 
 ## Usage
