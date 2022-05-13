@@ -20,11 +20,11 @@ In `.env`:
 
 `bundle exec puma`
 
-Visit https://localhost:9292/lookup?q=XYZ&shared_secret=abc to look up against your event.
+Visit https://localhost:3000/lookup?q=XYZ&shared_secret=abc to look up against your event.
 
 ## Deploy to Heroku
 
-- Visit https://localhost:9292
+- Visit https://localhost:3000
 - Hit "Deploy to Heroku"
 
 ## Usage
