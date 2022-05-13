@@ -1,9 +1,11 @@
-gem "httprb"
-gem "puma", "~> 5.6"
+source "https://rubygems.org"
+
+gem "http"
+gem "puma"
 gem "sinatra"
 gem "sinatra-contrib"
 
 group :development do
-  gem "dotenv", "~> 2.7"
-  gem "rerun", "~> 0.13.1"
+  gem "dotenv"
+  gem "rerun"
 end
