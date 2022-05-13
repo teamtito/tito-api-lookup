@@ -25,7 +25,10 @@ GEM
     multi_json (1.15.0)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
+    nio4r (2.5.8)
     public_suffix (4.0.6)
+    puma (5.6.4)
+      nio4r (~> 2.0)
     rack (2.2.3)
     rack-protection (2.2.0)
       rack
@@ -58,6 +61,7 @@ PLATFORMS
 DEPENDENCIES
   dotenv (~> 2.7)
   http (~> 4.4)
+  puma (~> 5.6)
   rerun (~> 0.13.1)
   sinatra
   sinatra-contrib (~> 2.2)

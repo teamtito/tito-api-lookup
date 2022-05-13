@@ -1,4 +1,6 @@
+require "sinatra"
 require "sinatra/json"
+configure { set :server, :puma }
 
 class Lookup < Sinatra::Base
   TITO_EVENT = ENV["TITO_EVENT"]
@@ -11,10 +13,12 @@ class Lookup < Sinatra::Base
   get "/lookup" do
     response = HTTP.auth("Bearer #{TITO_SECRET_KEY}").
       get("https://api.tito.io/v3/#{TITO_EVENT}/tickets.json?version=3.1&search[q]=#{params[:q]}")
-    results = response.parse["tickets"]
+    tickets = response.parse["tickets"]
 
-    if results.any? { |ticket| ticket["reference"] === params[:q] }
-      json valid: true
+    ticket = tickets.find { |ticket| ticket["reference"] === params[:q] }
+
+    if ticket
+      json valid: true, name: ticket["name"]
     else
       json valid: false
     end

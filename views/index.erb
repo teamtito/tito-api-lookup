@@ -3,25 +3,38 @@
   <head>
     <title>Tito API Lookup</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <style>
+      p { margin: 0px; }
+      button { padding: 0px; line-height: 0 }
+    </style>
   </head>
   <body>
     <h1>A simple app for looking up data using the Tito API.</h1>
 
     <form action="https://heroku.com/deploy?template=https://github.com/teamtito/tito-api-lookup/tree/main">
-      <label>
-        Tito event
-        <input type="text" name="env[TITO_EVENT]"><%= ENV["TITO_EVENT"].to_s %></label>
-      </label>
+      <div>
+        <label>
+          <strong>Tito event</strong>
+          <p>The account and event part of your event’s URL slug, e.g. <code>demo/awesomeconf</code></p>
+          <input type="text" name="env[TITO_EVENT]" value="<%= ENV["TITO_EVENT"].to_s %>">
+        </label>
+      </div>
 
-      <label>
-        Tito secret API key
-        <input type="text" name="env[TITO_SECRET_KEY]"></label>
-      </label>
+      <div>
+        <label>
+          <strong>Tito secret API key</strong>
+          <p>Your Tito secret API key. You can get this <a href="https://id.tito.io/api-access-tokens">here</a></p>
+          <input type="password" name="env[TITO_SECRET_KEY]" value="<%= ENV["TITO_SECRET_KEY"].to_s %>"></label>
+        </label>
+      </div>
 
-      <label>
-        Shared secret
-        <input type="text" name="env[SHARED_SECRET]"></label>
-      </label>
+      <div>
+        <label>
+          <strong>Shared secret (optional)</strong>
+          <p>An optional secret key to share with whoever you give access to this app to protect against unauthorised use.</p>
+          <input type="text" name="env[SHARED_SECRET]" value="<%= ENV["SHARED_SECRET"].to_s %>"></label>
+        </label>
+      </div>
 
       <button>
         <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
