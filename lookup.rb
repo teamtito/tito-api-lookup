@@ -16,12 +16,18 @@ class Lookup < Sinatra::Base
 
       query = [
         "template=https://github.com/teamtito/tito-api-lookup/tree/main",
-        "ENV[TITO_EVENT]=#{params[:tito_event]}",
-        "ENV[TITO_SECRET_KEY]=#{params[:tito_secret_key]}",
-        "ENV[SHARED_SECRET]=#{params[:shared_secret]}",
+        "env[TITO_EVENT]=#{params[:tito_event]}",
+        "env[TITO_SECRET_KEY]=#{params[:tito_secret_key]}",
+        "env[SHARED_SECRET]=#{params[:shared_secret]}",
       ].join("&")
 
-      redirect [base, query].join("?")
+      url = [base, query].join("?")
+
+      redirect
+    end
+  else
+    get "/" do
+      "Try /lookup"
     end
   end
 
