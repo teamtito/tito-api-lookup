@@ -6,5 +6,26 @@
   </head>
   <body>
     <h1>A simple app for looking up data using the Tito API.</h1>
+
+    <form action="https://heroku.com/deploy?template=https://github.com/teamtito/tito-api-lookup/tree/main">
+      <label>
+        Tito event
+        <input type="text" name="env[TITO_EVENT]"><%= ENV["TITO_EVENT"].to_s %></label>
+      </label>
+
+      <label>
+        Tito secret API key
+        <input type="text" name="env[TITO_SECRET_KEY]"></label>
+      </label>
+
+      <label>
+        Shared secret
+        <input type="text" name="env[SHARED_SECRET]"></label>
+      </label>
+
+      <button>
+        <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
+      </button>
+    </form>
   </body>
 </html>

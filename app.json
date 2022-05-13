@@ -1,0 +1,5 @@
+{
+  "name": "Tito API lookup",
+  "description": "A simple app to allow folks to look up the Tito API in a protected way",
+  "repository": "https://github.com/teamtito/tito-api-lookup"
+}
