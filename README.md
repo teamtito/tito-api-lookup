@@ -26,3 +26,19 @@ Visit https://localhost:9292/lookup?q=XYZ&shared_secret=abc to look up against y
 
 - Visit https://localhost:9292
 - Hit "Deploy to Heroku"
+
+## Usage
+
+`GET /lookup?q=< reference >&shared_secret=< your secret >`
+
+If a ticket with that reference matches, you'll get:
+
+```json
+{ "valid": true, "name": "Joe Bloggs" }
+```
+
+If it doesn't match, you'll get:
+
+```json
+{ "valid": false }
+```

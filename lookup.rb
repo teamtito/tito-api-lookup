@@ -23,7 +23,7 @@ class Lookup < Sinatra::Base
 
       url = [base, query].join("?")
 
-      redirect
+      redirect url
     end
   else
     get "/" do
@@ -32,12 +32,16 @@ class Lookup < Sinatra::Base
   end
 
   get "/lookup" do
-    if ENV["SHARED_SECRET"]
-      if Rack::Utils.secure_compare(params[:shared_secret], ENV["SHARED_SECRET"])
-        error 401 do
-          { error: "Unauthorized" }
-        end
-      end
+    if !ENV["TITO_SECRET_KEY"] || ENV["TITO_SECRET_KEY"] == ""
+      return "Tito Secret Key is missing"
+    end
+
+    if !ENV["TITO_EVENT"] || ENV["TITO_EVENT"] == ""
+      return "Tito Event is missing"
+    end
+
+    if !secure_compare(params[:shared_secret].to_s, ENV["SHARED_SECRET"].to_s)
+      return "Unauthorized"
     end
 
     response = HTTP.auth("Bearer #{TITO_SECRET_KEY}").
