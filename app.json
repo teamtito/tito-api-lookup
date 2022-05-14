@@ -1,5 +1,10 @@
 {
   "name": "Tito API lookup",
   "description": "A simple app to allow folks to look up the Tito API in a protected way",
-  "repository": "https://github.com/teamtito/tito-api-lookup"
+  "repository": "https://github.com/teamtito/tito-api-lookup",
+  "env": {
+    "TITO_EVENT": "demo/awesomeconf",
+    "TITO_SECRET_KEY": "xzy",
+    "SHARED_SECRET": "abc"
+  }
 }
