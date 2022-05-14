@@ -46,6 +46,26 @@ class Lookup < Sinatra::Base
 
     response = HTTP.auth("Bearer #{TITO_SECRET_KEY}").
       get("https://api.tito.io/v3/#{TITO_EVENT}/tickets.json?version=3.1&search[q]=#{params[:q]}")
+
+    if response.status == 404
+      return json(
+        status: response.status,
+        message: "Event not found",
+        hint: "Check TITO_EVENT"
+      )
+    elsif response.status == 401
+      return json(
+        status: response.status,
+        message: "Unauthorized",
+        hint: "Check TITO_SECRET_KEY"
+      )
+    elsif response.status > 299
+      return json(
+        status: response.status,
+        message: "Unexpected response from the Tito API"
+      )
+    end
+
     tickets = response.parse["tickets"]
 
     ticket = tickets.find { |ticket| ticket["reference"] === params[:q] }
