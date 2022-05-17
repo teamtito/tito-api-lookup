@@ -6,6 +6,8 @@ Sometimes you want to be able to let folks do something with data in Tito withou
 
 ## Get started
 
+Assuming you have Ruby and bundler installed on your system:
+
 `bundle install`
 
 ## Run in development
@@ -20,11 +22,11 @@ In `.env`:
 
 `bundle exec puma -p 7170`
 
-Visit https://localhost:7170/lookup?q=XYZ&shared_secret=abc to look up against your event.
+Visit http://localhost:7170/lookup?q=XYZ&shared_secret=abc to look up against your event.
 
 ## Deploy to Heroku
 
-- Visit https://localhost:7170
+- Visit http://localhost:7170
 - Hit "Deploy to Heroku"
 
 ## Usage
